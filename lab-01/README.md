@@ -1,6 +1,6 @@
 # Lab 1: Node.js and Express server
 
-**Name:** M. Ekshith · **Registration number:** REG_NO_HERE · **Section:** SECTION_HERE
+**Name:** M. Ekshith · **Registration number:** 252U1R9096 · **Section:** SECTION_HERE
 
 **Live link:** Not deployed. *(Replace with your Render / Railway / Cloud IDE URL, or keep this line and rely on the Postman screenshots below.)*
 
