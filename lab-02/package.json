@@ -1,0 +1,21 @@
+{
+  "name": "bdf-lab-02",
+  "version": "1.0.0",
+  "description": "Lab 2: SQLite database and CRUD routes",
+  "main": "app.js",
+  "scripts": {
+    "seed": "node seed.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "M. Ekshith",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
