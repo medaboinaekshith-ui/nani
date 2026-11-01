@@ -1,0 +1,16 @@
+{
+  "name": "bdf-lab-01",
+  "version": "1.0.0",
+  "description": "Lab 1: Node.js and Express server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:http": "node server-http.js"
+  },
+  "keywords": [],
+  "author": "M. Ekshith",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
