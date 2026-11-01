@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Student details shown by /about (fill in your own section)
-const STUDENT = { name: 'M. Ekshith', section: 'SECTION_HERE' };
+const STUDENT = { name: 'M. Ekshith', section: '111, CSE-GEN(AI)' };
 
 // GET / -> welcome text
 app.get('/', (req, res) => {
