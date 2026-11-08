@@ -1,0 +1,10 @@
+# Render Blueprint: deploys lab-03 as a free web service.
+# If this folder is inside a bigger repo, set rootDir to the folder (lab-03).
+services:
+  - type: web
+    name: bdf-lab-03-api
+    runtime: node
+    rootDir: lab-03
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start

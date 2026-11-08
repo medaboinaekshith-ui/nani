@@ -1,4 +1,5 @@
 // Lab 3: REST API with query parameters, validation and consistent responses
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const sqlite3 = require('sqlite3');
@@ -102,6 +103,9 @@ app.use((req, res) => sendError(res, 404, `Route ${req.method} ${req.originalUrl
 const initializeDBAndServer = async () => {
   try {
     db = await open({ filename: path.join(__dirname, 'bookstore.db'), driver: sqlite3.Database });
+    // On a fresh deployment the database file does not exist yet: create it from initDB.sql
+    const table = await db.get("SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'book'");
+    if (!table) await db.exec(fs.readFileSync(path.join(__dirname, 'initDB.sql'), 'utf8'));
     app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/books`));
   } catch (error) {
     console.error(`Database error: ${error.message}`);

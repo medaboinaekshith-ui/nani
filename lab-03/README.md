@@ -112,6 +112,15 @@ Import `postman_collection.json` (each request checks its status code). Run S8 b
 | Table name typo | `SQLITE_ERROR: no such table: books` | Use the table name from `initDB.sql`, which is `book` |
 | Missing `await` | Response is `{}` or a pending Promise | Put `await` before `db.get`, `db.all` and `db.run`, and make the handler `async` |
 
+## Deploying (Render, free plan)
+
+1. Push the repo to GitHub and sign in at render.com with GitHub.
+2. New + → **Blueprint** (uses `render.yaml`) or New + → Web Service with Root Directory `lab-03`, Build Command `npm install`, Start Command `npm start`.
+3. No environment variables are needed (Render sets `PORT` itself). The server creates and fills `bookstore.db` on first start.
+4. Copy the public URL (e.g. `https://bdf-lab-03-api.onrender.com/books`) to the top of this README.
+
+Note: on the free plan the SQLite file resets whenever the service restarts, so data you add is temporary.
+
 ## Notes: problems faced and how I solved them
 
 - **`order_by` and `order` cannot be `?` placeholders**, because placeholders only stand for values, not column names or keywords. They are checked against a fixed allowlist, and only then written into the SQL. Everything else uses `?`.
@@ -137,6 +146,8 @@ lab-03/
 ├── test_queryBuilder.js      Unit tests for queryBuilder.js
 ├── test_routes.js            Checks every route against a running server
 ├── postman_collection.json   Postman tests (success and failure)
+├── render.yaml               Render deployment settings
+├── debug-practice/           Broken copy with 4 planted bugs (+ ANSWERS.md)
 ├── package.json
 ├── .gitignore                Excludes node_modules/, .env and *.db
 └── screenshots/
