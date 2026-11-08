@@ -18,6 +18,7 @@ const call = async (label, method, path, expected, body, rawBody) => {
 };
 
 const run = async () => {
+  await call('S0 welcome', 'GET', '/', 200);
   await call('S1 list', 'GET', '/books', 200);
   await call('S2 search', 'GET', '/books?search_q=java', 200);
   await call('S3 sort', 'GET', '/books?order_by=price&order=DESC', 200);

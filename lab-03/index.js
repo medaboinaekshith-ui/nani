@@ -14,6 +14,30 @@ let db = null;
 
 const sendError = (res, status, message) => res.status(status).json({ message });
 
+// GET / -> welcome message and endpoint list
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome to the Books REST API - Lab 3',
+    student: 'M. Ekshith (252U1R9096)',
+    endpoints: {
+      'GET /books': 'List books (supports query parameters)',
+      'GET /books/:id': 'Get a single book by id',
+      'POST /books': 'Create a new book',
+      'PUT /books/:id': 'Update an existing book',
+      'DELETE /books/:id': 'Delete a book',
+    },
+    queryParameters: {
+      search_q: 'Search book titles (partial match)',
+      order_by: 'Sort column (id, title, author, price)',
+      order: 'Sort direction (ASC or DESC)',
+      limit: 'Maximum number of results (default: 10)',
+      offset: 'Number of records to skip (default: 0)',
+      min_price: 'Minimum price filter',
+      max_price: 'Maximum price filter',
+    },
+  });
+});
+
 // GET /books -> search, sort, filter and paginate
 app.get('/books', async (req, res) => {
   const q = parseListQuery(req.query);

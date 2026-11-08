@@ -27,6 +27,7 @@ Paths are nouns (`/books`); the HTTP method shows the action.
 
 | Method | Path | Description | Success |
 |---|---|---|---|
+| GET | `/` | Welcome message and list of endpoints | 200 |
 | GET | `/books` | List books with search, sort, price filter and pagination | 200 |
 | GET | `/books/:id` | Get one book | 200 |
 | POST | `/books` | Create a book | 201 |
@@ -96,6 +97,7 @@ Import `postman_collection.json` (each request checks its status code). Run S8 b
 
 ## Screenshots
 
+![GET / welcome message](screenshots/get-root.png)
 ![Search and sort result](screenshots/get-search-sort.png)
 ![Price range result](screenshots/get-price-range.png)
 ![Create returns 201](screenshots/post-201.png)
