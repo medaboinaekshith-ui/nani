@@ -1,0 +1,19 @@
+{
+  "name": "bdf-lab-03",
+  "version": "1.0.0",
+  "description": "Lab 3: REST API, query parameters, validation, debugging",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node setupDb.js",
+    "start": "node index.js",
+    "test:unit": "node test_queryBuilder.js",
+    "test:routes": "node test_routes.js"
+  },
+  "author": "M. Ekshith",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,918 @@
+{
+  "info": {
+    "name": "BDF Lab 3 - Books REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "bookId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "S1 List books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S2 Search title",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?search_q=java",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "search_q",
+              "value": "java"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S3 Sort by price DESC",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?order_by=price&order=DESC",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "order_by",
+              "value": "price"
+            },
+            {
+              "key": "order",
+              "value": "DESC"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S4 Pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?limit=3&offset=3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "3"
+            },
+            {
+              "key": "offset",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S5 Price range",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?min_price=2000&max_price=4000",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "min_price",
+              "value": "2000"
+            },
+            {
+              "key": "max_price",
+              "value": "4000"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S6 Combined query",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?search_q=java&order_by=price&order=DESC&limit=5&min_price=1000",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "search_q",
+              "value": "java"
+            },
+            {
+              "key": "order_by",
+              "value": "price"
+            },
+            {
+              "key": "order",
+              "value": "DESC"
+            },
+            {
+              "key": "limit",
+              "value": "5"
+            },
+            {
+              "key": "min_price",
+              "value": "1000"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S7 Get one book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "1"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S8 Create book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Book\",\n  \"author\": \"Tester\",\n  \"price\": 499.5,\n  \"pages\": 120\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 201\", () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set(\"bookId\", pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S9 Update book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "{{bookId}}"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Book 2\",\n  \"author\": \"Tester\",\n  \"price\": 599,\n  \"pages\": 130\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "S10 Delete book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/{{bookId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "{{bookId}}"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F1 Invalid order_by",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?order_by=pages",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "order_by",
+              "value": "pages"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F2 Invalid order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?order=up",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "order",
+              "value": "up"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F3 limit too large",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?limit=500",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "500"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F4 Non-numeric min_price",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?min_price=abc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "min_price",
+              "value": "abc"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F5 min_price above max_price",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books?min_price=900&max_price=100",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": [
+            {
+              "key": "min_price",
+              "value": "900"
+            },
+            {
+              "key": "max_price",
+              "value": "100"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F6 Invalid id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/abc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "abc"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F7 Missing id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/99999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "99999"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F8 Missing title",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"A\",\n  \"price\": 10\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F9 Missing author",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"T\",\n  \"price\": 10\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F10 Non-numeric price",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"T\",\n  \"author\": \"A\",\n  \"price\": \"ten\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F11 Negative price",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"T\",\n  \"author\": \"A\",\n  \"price\": -5\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F12 Broken JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"title\": "
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F13 Empty title on PUT",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "1"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"author\": \"A\",\n  \"price\": 10\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F14 PUT missing id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/books/99999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "99999"
+          ],
+          "query": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"T\",\n  \"author\": \"A\",\n  \"price\": 10\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F15 DELETE missing id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/99999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "books",
+            "99999"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "F16 Unknown route",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/authors",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "authors"
+          ],
+          "query": []
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status is 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
